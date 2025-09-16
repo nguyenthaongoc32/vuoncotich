@@ -1,10 +1,48 @@
-.bracelet-detail {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
+.detail-container {
+    display: flex;
+    gap:150px;
+    padding: 20px;
   }
   
-  .bracelet-slider {
-    margin-top: 20px;
+  .image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-image {
+    width: 100%;        /* ảnh chính to */
+    height: 70%;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    object-fit: contain
+  }
+  
+  .thumbs {
+    width: 820px;
+  }
+  
+  .thumb-image {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 6px;
+  }
+  
+  .thumb-image:hover {
+    border: 2px solid #333;
+  }
+  
+  .info-section {
+    flex: 1;
+  }
+  
+  .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d12b2b;
+    margin: 10px 0;
   }
   

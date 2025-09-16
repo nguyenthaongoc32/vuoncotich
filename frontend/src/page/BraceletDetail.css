@@ -1,42 +1,44 @@
 .detail-container {
     display: flex;
-    gap:150px;
-    padding: 20px;
+    gap: 30px;
+    padding: 10px;
+    flex-wrap: wrap;
   }
   
   .image-section {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 500px;
   }
   
   .main-image {
-    width: 100%;        /* ảnh chính to */
-    height: 70%;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    object-fit: contain
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Giữ toàn bộ ảnh, không cắt góc */
+    border-radius: 12px;
   }
   
-  .thumbs {
-    width: 820px;
+  .thumb-swiper {
+    margin-top: 10px;
   }
   
   .thumb-image {
     width: 100%;
-    height: 100%;
+    height: 80px;
+    object-fit: contain; /* Giữ nguyên góc */
     cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 6px;
+    border-radius: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
   }
   
-  .thumb-image:hover {
-    border: 2px solid #333;
+  .thumb-image:hover,
+  .swiper-slide-thumb-active img {
+    opacity: 1;
   }
   
   .info-section {
     flex: 1;
+    min-width: 250px;
   }
   
   .price {

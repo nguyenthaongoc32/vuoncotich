@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 import "./BraceletDetail.css";
 
 const BraceletDetail = () => {
   const { id } = useParams();
   const [bracelet, setBracelet] = useState(null);
-  const [mainImage, setMainImage] = useState("");
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     axios
       .get(`https://vuoncotich-6.onrender.com/bracelet/${id}`)
-      .then((res) => {
-        setBracelet(res.data);
-        setMainImage(res.data.coverImage); // Ảnh chính mặc định
-      })
+      .then((res) => setBracelet(res.data))
       .catch((err) => console.error("Lỗi khi fetch bracelet detail:", err));
   }, [id]);
 
@@ -26,24 +26,38 @@ const BraceletDetail = () => {
     <div className="detail-container">
       {/* Cột bên trái: Ảnh */}
       <div className="image-section">
-  {/* Ảnh chính */}
-  <img src={mainImage} alt={bracelet.name} className="main-image" />
+        {/* Swiper chính */}
+        <Swiper
+          modules={[Navigation, Thumbs]}
+          navigation
+          thumbs={{ swiper: thumbsSwiper }}
+          spaceBetween={10}
+          slidesPerView={1}
+          className="main-swiper"
+        >
+          {bracelet?.descriptionImages?.map((img, idx) => (
+            <SwiperSlide key={idx}>
+              <img src={img} alt={`img-${idx}`} className="main-image" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-  {/* Slide ảnh nhỏ */}
-  <Swiper slidesPerView={4} spaceBetween={30} className="thumbs">
-    {[ ...bracelet.descriptionImages].map((img, idx) => (
-      <SwiperSlide key={idx}>
-        <img
-          src={img}
-          alt={`thumb-${idx}`}
-          className="thumb-image"
-          onClick={() => setMainImage(img)}
-        />
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</div>
-
+        {/* Swiper thumbnail */}
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          modules={[Thumbs]}
+          spaceBetween={10}
+          slidesPerView={4}
+          watchSlidesProgress
+          className="thumb-swiper"
+        >
+          {bracelet?.descriptionImages?.map((img, idx) => (
+            <SwiperSlide key={idx}>
+              <img src={img} alt={`thumb-${idx}`} className="thumb-image" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
       {/* Cột bên phải: Thông tin */}
       <div className="info-section">

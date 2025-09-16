@@ -1,6 +1,6 @@
 import React from 'react'
-import Banner from '../component/homepage/Banner'
-import JewelryList from '../component/homepage/JewelryList'
+import Banner from '../component/homepage/Banner.jsx'
+import JewelryList from "../component/homepage/JewelryList.jsx";
 const HomePage = () => {
   return (
     <div>

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./page/HomePage";
-import BraceletList from "./page/BraceletList";
-import BraceletDetail from "./page/BraceletDetail";
+import HomePage from "./page/HomePage.jsx";
+import BraceletList from "./page/BraceletList.jsx";
+import BraceletDetail from "./page/BraceletDetail.jsx";
 
 function App() {
   return (

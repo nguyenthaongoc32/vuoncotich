@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import Banner from "./component/homepage/Banner";
-
-import JewelryList from "./component/homepage/jewelryList";
+import HomePage from "./page/HomePage";
+import BraceletList from "./page/BraceletList";
 
 
 function App() {
   return (
-    <div>
-      <Banner/>
-      <JewelryList/>
-    </div>
+    <>
+      {/* <HomePage/> */}
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/bracelets" element={<BraceletList/>}/>
+      </Routes>
+
+    </>
   );
 }
 
 export default App;
-    

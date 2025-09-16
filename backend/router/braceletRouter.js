@@ -4,9 +4,9 @@ import { getBracelets, getBracelet } from "../controller/braceletController.js";
 const router = express.Router();
 
 // GET all
-router.get("/bracelet", getBracelets);
+router.get("/", getBracelets);
 
 // GET one by id
-router.get("/bracelet/:id", getBracelet);
+router.get("/:id", getBracelet);
 
 export default router;

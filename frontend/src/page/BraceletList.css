@@ -1,8 +1,10 @@
+
 .bracelet-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
+    
   }
   
   .bracelet-item {
@@ -12,6 +14,7 @@
     padding: 15px;
     background: #fff;
     transition: 0.3s;
+    background-color: rgb(255, 222, 233);
   }
   
   .bracelet-item img {
@@ -25,4 +28,11 @@
     transform: translateY(-5px);
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
   }
-  
+  .bracelet-item h3 {
+    color: rgb(184, 46, 46);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+  }
+  .bracelet-item{
+    text-decoration: none;
+  }

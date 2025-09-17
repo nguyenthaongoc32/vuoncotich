@@ -36,3 +36,13 @@
   .bracelet-item{
     text-decoration: none;
   }
+  .back-btn{
+    background-color: red;
+    border:  none;
+    padding: 10px 20px 10px 10px;
+    margin-bottom: 10px;
+    color: #eee;
+  }
+  .back-btn:hover{
+    background-color: #d6336c;
+  }

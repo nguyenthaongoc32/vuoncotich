@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BraceletDetail.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; 
 import axios from "axios";
 
 // Import Swiper
@@ -12,6 +12,7 @@ import "swiper/css/pagination";
 
 const BraceletDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [bracelet, setBracelet] = useState(null);
 
   useEffect(() => {
@@ -29,6 +30,9 @@ const BraceletDetail = () => {
   return (
     <div className="bracelet-detail">
       <div className="bracelet-left">
+      <button className="back-btn" onClick={() => navigate(-1)}>
+          ← Back 
+        </button>
         <Swiper
           modules={[Navigation, Pagination]}
           navigation

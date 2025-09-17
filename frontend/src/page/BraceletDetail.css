@@ -70,7 +70,16 @@
     font-size: 18px;
   }
 }
-
+.back-btn{
+  background-color: red;
+  border:  none;
+  padding: 10px 20px 10px 10px;
+  margin-bottom: 10px;
+  color: #eee;
+}
+.back-btn:hover{
+  background-color: #d6336c;
+}
 /* Mobile (dưới 768px) */
 @media (max-width: 768px) {
   .bracelet-detail {
@@ -102,6 +111,7 @@
     text-align: center;
   }
 }
+
 
 /* Mobile nhỏ (dưới 480px) */
 @media (max-width: 480px) {

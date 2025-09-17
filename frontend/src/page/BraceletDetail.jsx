@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
+import "./BraceletDetail.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+// Import Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import "./BraceletDetail.css";
+import "swiper/css/pagination";
 
 const BraceletDetail = () => {
   const { id } = useParams();
   const [bracelet, setBracelet] = useState(null);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     axios
@@ -22,53 +23,41 @@ const BraceletDetail = () => {
 
   if (!bracelet) return <p>Đang tải...</p>;
 
+  // Gom ảnh cover + ảnh mô tả
+  const images = [ ...(bracelet.descriptionImages || [])];
+
   return (
-    <div className="detail-container">
-      {/* Cột bên trái: Ảnh */}
-      <div className="image-section">
-        {/* Swiper chính */}
+    <div className="bracelet-detail">
+      <div className="bracelet-left">
         <Swiper
-          modules={[Navigation, Thumbs]}
+          modules={[Navigation, Pagination]}
           navigation
-          thumbs={{ swiper: thumbsSwiper }}
+          pagination={{ clickable: true }}
           spaceBetween={10}
           slidesPerView={1}
-          className="main-swiper"
+          className="bracelet-swiper"
         >
-          {bracelet?.descriptionImages?.map((img, idx) => (
+          {images.map((img, idx) => (
             <SwiperSlide key={idx}>
-              <img src={img} alt={`img-${idx}`} className="main-image" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Swiper thumbnail */}
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          modules={[Thumbs]}
-          spaceBetween={10}
-          slidesPerView={4}
-          watchSlidesProgress
-          className="thumb-swiper"
-        >
-          {bracelet?.descriptionImages?.map((img, idx) => (
-            <SwiperSlide key={idx}>
-              <img src={img} alt={`thumb-${idx}`} className="thumb-image" />
+              <img src={img} alt={`bracelet-${idx}`} className="bracelet-img" />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      {/* Cột bên phải: Thông tin */}
-      <div className="info-section">
+      <div className="bracelet-right">
         <h2>{bracelet.name}</h2>
-        <p className="price">{bracelet.price}</p>
+        <p className="bracelet-price">{bracelet.price}</p>
         <p><strong>Chất liệu:</strong> {bracelet.description.material}</p>
         <p><strong>Kích thước:</strong> {bracelet.description.size}</p>
-        <p><strong>Màu charm:</strong> {bracelet.description.colorCharm}</p>
-        {bracelet.description.note && (
-          <p><strong>Ghi chú:</strong> {bracelet.description.note}</p>
-        )}
+        {bracelet.description.colorCharm && (
+    <p><strong>Màu charm:</strong> {bracelet.description.colorCharm}</p>
+  )}
+
+  {/* Chỉ hiển thị nếu có note */}
+  {bracelet.description.note && (
+    <p><strong>Note:</strong> {bracelet.description.note}</p>
+  )}
       </div>
     </div>
   );

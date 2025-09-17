@@ -1,50 +1,124 @@
-.detail-container {
-    display: flex;
+.bracelet-detail {
+  display: flex;
+  gap: 150px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Bên trái (ảnh) */
+.bracelet-left {
+  flex: 1;
+  max-width: 350px;
+}
+
+.bracelet-swiper {
+  width: 100%;
+  height: auto; /* để responsive */
+  aspect-ratio: 3/4; /* khung chữ nhật, thay đổi tuỳ ảnh */
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.bracelet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Giữ nguyên tỉ lệ ảnh */
+}
+
+/* Bên phải (thông tin) */
+.bracelet-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bracelet-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 1px 0;
+  color: #d6336c;
+}
+
+.bracelet-right h2 {
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(121, 112, 112);
+}
+
+.bracelet-right p {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ============= Responsive ============= */
+
+/* Tablet (dưới 1024px) */
+@media (max-width: 1024px) {
+  .bracelet-detail {
+    gap: 60px;
+    padding: 15px;
+  }
+
+  .bracelet-right h2 {
+    font-size: 1.8rem;
+  }
+
+  .bracelet-right p {
+    font-size: 18px;
+  }
+}
+
+/* Mobile (dưới 768px) */
+@media (max-width: 768px) {
+  .bracelet-detail {
+    flex-direction: column; /* Ảnh lên trên, text xuống dưới */
     gap: 30px;
     padding: 10px;
-    flex-wrap: wrap;
   }
-  
-  .image-section {
-    flex: 1;
-    max-width: 500px;
+
+  .bracelet-left {
+    max-width: 100%;
   }
-  
-  .main-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* Giữ toàn bộ ảnh, không cắt góc */
-    border-radius: 12px;
+
+  .bracelet-swiper {
+    aspect-ratio: 4/5; /* hình chữ nhật cho mobile */
   }
-  
-  .thumb-swiper {
-    margin-top: 10px;
+
+  .bracelet-right h2 {
+    font-size: 1.5rem;
+    text-align: center;
   }
-  
-  .thumb-image {
-    width: 100%;
-    height: 80px;
-    object-fit: contain; /* Giữ nguyên góc */
-    cursor: pointer;
-    border-radius: 8px;
-    opacity: 0.7;
-    transition: opacity 0.3s;
+
+  .bracelet-price {
+    font-size: 1.2rem;
+    text-align: center;
   }
-  
-  .thumb-image:hover,
-  .swiper-slide-thumb-active img {
-    opacity: 1;
+
+  .bracelet-right p {
+    font-size: 16px;
+    text-align: center;
   }
-  
-  .info-section {
-    flex: 1;
-    min-width: 250px;
+}
+
+/* Mobile nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .bracelet-detail {
+    gap: 20px;
+    padding: 8px;
   }
-  
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #d12b2b;
-    margin: 10px 0;
+
+  .bracelet-right h2 {
+    font-size: 1.3rem;
   }
-  
+
+  .bracelet-price {
+    font-size: 1rem;
+  }
+
+  .bracelet-right p {
+    font-size: 14px;
+  }
+}

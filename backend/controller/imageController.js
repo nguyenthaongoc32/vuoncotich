@@ -17,7 +17,7 @@ const uploadImage = async (req, res, next) => {
     }
 
     sharp(file.buffer)
-        .resize({ width: 700, height: 418 })
+        .resize({ width: 980, height: 1255 })
         .jpeg({ quality: 80 })
         .toBuffer(async (error, data, info) => {
             if (error) {
